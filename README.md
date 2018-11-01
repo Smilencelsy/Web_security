@@ -27,14 +27,15 @@ The homework of Web Security
   统计所有口令的长度, 找出占比最高的口令长度, 作为生成字典的主要长度    
   结果如下:   
   
-  <img src="source/passwd_length.png" width = 70% height = 70% /> <br>
+  <img src="source/passwd_length.png" width = 90% height = 90% /> <br>
 
   ps: 口令的最大长度为40, print了一下长度为40的字符串, 无法正常显示, 应该是中文密码   
   pps: 顺便查了下有没有sql注入的密码, 只找到一个 '1=1' && 'yn'  嘻嘻   
   ppps: 图好像画错了, 两个都是8位最多, 我明天重画一个...   
+  </br>
   
 * 口令结构分析    
-  口令可以由数字、字母、字符组成，分别由D(digit)、L(letter)、S(signel)代替   
+  口令可以由数字、字母、字符组成，分别由D(digit)、L(letter)、S(signel)表示   
   在程序中遍历所有口令,识别其结构,以LxDxSx的格式存储(x为长度), 比如
   > woaini777  ->  L6D3
 
@@ -46,10 +47,8 @@ The homework of Web Security
   | ------ | ------ |
   | L5D2 | 8704 |
 
-  结论: yahoo的口令文件中L6,L7,L8分别占据123名, 数量为42234,34285,30250   
-  这三者的占比达到了总数量453490条的23.5%   
-  csdn的口令文件中D8,D9,L8分别占据123名, 数量为1381247,718225,312749   
-  这三者之和为2412221, 占总数量6428631的37.5%
+  结论: yahoo的口令文件中L6,L7,L8分别占据1、2、3名, 数量为42234,34285,30250, 这三者的占比达到了总数量453490条的23.5%   
+  csdn的口令文件中D8,D9,L8分别占据1、2、3名, 数量为1381247,718225,312749, 这三者之和为2412221, 占总数量6428631的37.5%
 
   输出文件2: 纯数字/字母/字符口令数量以及使用频率top10    
   
@@ -57,9 +56,17 @@ The homework of Web Security
   | ------ | ------ |------| ------ |   
   | L8 | 8704 | sksssss:100| xxxxxxxx:100|
 
-  @@@ 还没做的: 统计使用两种字母/数字/字符其中两种结合的, 三种结合的用户数量, 测评密码的安全度
+  yahoo:   
+  <img src="source/onlyLDS-yahoo.png" width = 90% height = 90% /> </br>
   
-  结果一览:
+  csdn:   
+  <img src="source/onlyDLS-csdn.png" width = 90% height = 90% /> </br>
+  
+  还有些奇怪的东西:
+  <img src="source/onlyDLS.png" width = 90% height = 90% /> </br>
+  
+  @@@ 还没做的: 统计使用两种字母/数字/字符其中两种结合的, 三种结合的用户数量, 测评密码的安全度   
+  
 
 * 日期格式口令分析   
   首先对纯数字组成的日期进行分析, 按照习惯, 有可能出现年份(yyyy), 年份-月份(yyyymm) , 年月日(yyyymmdd) 以及
