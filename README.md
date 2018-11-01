@@ -30,8 +30,9 @@ The homework of Web Security
   <img src="source/passwd_length.png" width = 70% height = 70% /> <br>
 
   ps: 口令的最大长度为40, print了一下长度为40的字符串, 无法正常显示, 应该是中文密码   
-  pps: 顺便查了下有没有sql注入的密码, 只找到一个 '1=1' && 'yn'  :)
-
+  pps: 顺便查了下有没有sql注入的密码, 只找到一个 '1=1' && 'yn'  嘻嘻   
+  ppps: 图好像画错了, 两个都是8位最多, 我明天重画一个...   
+  
 * 口令结构分析    
   口令可以由数字、字母、字符组成，分别由D(digit)、L(letter)、S(signel)代替   
   在程序中遍历所有口令,识别其结构,以LxDxSx的格式存储(x为长度), 比如
