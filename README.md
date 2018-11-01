@@ -41,7 +41,7 @@ The homework of Web Security
 
   ps: 使用了python自带的c.isdigit() isalpha() 判断字母和数字    
 
-  输出文件1: 口令结构与对应数量
+  **输出文件1** : 口令结构与对应数量
 
   | structure | nums |
   | ------ | ------ |
@@ -49,21 +49,22 @@ The homework of Web Security
 
   结论: yahoo的口令文件中L6,L7,L8分别占据1、2、3名, 数量为42234,34285,30250, 这三者的占比达到了总数量453490条的23.5%   
   csdn的口令文件中D8,D9,L8分别占据1、2、3名, 数量为1381247,718225,312749, 这三者之和为2412221, 占总数量6428631的37.5%
-
-  输出文件2: 纯数字/字母/字符口令数量以及使用频率top10    
+  </br>
+  
+  **输出文件2**: 纯数字/字母/字符口令数量以及使用频率top10    
   
   | structure | nums | 1 | 2 ...|   
   | ------ | ------ |------| ------ |   
   | L8 | 8704 | sksssss:100| xxxxxxxx:100|
 
-  yahoo:   
+  yahoo结果:   
   <img src="source/onlyLDS-yahoo.png" width = 90% height = 90% /> </br>
   
-  csdn:   
+  csdn结果:   
   <img src="source/onlyDLS-csdn.png" width = 90% height = 90% /> </br>
   
   还有些奇怪的东西:
-  <img src="source/onlyDLS.png" width = 90% height = 90% /> </br>
+  <img src="source/onlyDLS.jpg" width = 90% height = 90% /> </br>
   
   @@@ 还没做的: 统计使用两种字母/数字/字符其中两种结合的, 三种结合的用户数量, 测评密码的安全度   
   
