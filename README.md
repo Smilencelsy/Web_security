@@ -27,10 +27,10 @@ The homework of Web Security
   统计所有口令的长度, 找出占比最高的口令长度, 作为生成字典的主要长度    
   结果如下:   
   
-  <img src="source/passwd_length.png" width = 50% height = 50% /> <br>
+  <img src="source/passwd_length.png" width = 70% height = 70% /> <br>
 
-  ps: 口令的最大长度为40, print了一下长度为40的字符串, 无法正常显示, 应该是中文密码
-  pps: 顺便查了下有没有sql注入的密码, 只找到一个 '1=1' && 'yn'
+  ps: 口令的最大长度为40, print了一下长度为40的字符串, 无法正常显示, 应该是中文密码   
+  pps: 顺便查了下有没有sql注入的密码, 只找到一个 '1=1' && 'yn'  :)
 
 * 口令结构分析    
   口令可以由数字、字母、字符组成，分别由D(digit)、L(letter)、S(signel)代替   
