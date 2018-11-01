@@ -4,7 +4,11 @@ The homework of Web Security
 
 ### 0x00 代码结构说明
 ---
+代码匆忙整理了一下, 没有规范输入输出以及函数命名, 注释也写得不够详细, 请见谅!
 - data_analysis 数据分析
+	* length_count.py 输入yahoopw.csv/csdnpw.csv 输出passwd_length.csv
+	* structure_analysis.py 输入yahoopw.csv/csdnpw.csv 输出structure_analysis.csv & onlyLorD_analysis.csv
+	* date_analysis 输入yahoopw.csv/csdnpw.csv 输出onlydate_passwd.csv & enDate.csv
 - pwdList_generate 字典生成
 
 
@@ -19,25 +23,74 @@ The homework of Web Security
 
 ### 0x02 数据分析思路与结论
 ---
-* 口令长度规律分析(/data_analysis/length_count.py)
-  统计所有口令的长度, 找出占比最高的口令长度, 作为生成字典的主要长度
+* 口令长度规律分析(/data_analysis/length_count.py)    
+  统计所有口令的长度, 找出占比最高的口令长度, 作为生成字典的主要长度    
   结果如下:
 
+  ps: 口令的最大长度为40, print了一下长度为40的字符串, 无法正常显示, 应该是中文密码
+  pps: 顺便查了下有没有sql注入的密码, 只找到一个 '1=1' && 'yn'
 
-* 口令结构分析
-  口令可以由数字、字母、字符组成，分别由D(digit)、L(letter)、S(signel)代替
+* 口令结构分析    
+  口令可以由数字、字母、字符组成，分别由D(digit)、L(letter)、S(signel)代替   
   在程序中遍历所有口令,识别其结构,以LxDxSx的格式存储(x为长度), 比如
   > woaini777  ->  L6D3
 
-  ps: 使用了python自带的c.isdigit() isalpha() 判断字母和数字
+  ps: 使用了python自带的c.isdigit() isalpha() 判断字母和数字    
 
-(2) 数据文件：
-	yahooStruc.csv  CSDNStruc.csv
-	格式 口令结构串：出现频率
+  输出文件1: 口令结构与对应数量
 
-(3) 纯字母、纯数字的口令占比
-	yahooOnlyLorD.csv
-	CSDNOnlyLorD.csv
+  | structure | nums |
+  | ------ | ------ |
+  | L5D2 | 8704 |
+
+  结论: yahoo的口令文件中L6,L7,L8分别占据123名, 数量为42234,34285,30250   
+  这三者的占比达到了总数量453490条的23.5%   
+  csdn的口令文件中D8,D9,L8分别占据123名, 数量为1381247,718225,312749   
+  这三者之和为2412221, 占总数量6428631的37.5%
+
+  输出文件2: 纯数字/字母/字符口令数量以及使用频率top10 
+  | structure | nums | 1 | 2 ...|
+  | ------ | ------ |------| ------ |
+  | L8 | 8704 | sksssss:100| xxxxxxxx:100|
+
+  @@@ 还没做的: 统计使用两种字母/数字/字符其中两种结合的, 三种结合的用户数量, 测评密码的安全度
+  
+  结果一览:
+
+* 日期格式口令分析   
+  首先对纯数字组成的日期进行分析, 按照习惯, 有可能出现年份(yyyy), 年份-月份(yyyymm) , 年月日(yyyymmdd) 以及
+  月日(mmdd)这四种主要形式, 日期我们限定在正常日期(年份取近现代史1700-2100,月取01-12,日期取01-31)内, 然后对所有
+  口令进行正则判断, 得到以下结果:
+
+  - yahoo:
+    | yyyy |  yyyy-mm |  yyyy-mm-dd | mm-dd |
+    |------|------|------|------|
+    | 26995 | 829 | 285 | 21712 |
+	所有数字长度大于4的口令数量为96742, 而含有(形似)日期数字的口令数量总共有49821条, 占51.5%, 占总口令数量的10.9%
+	而对含英文日期的口令进行检测(如Jan\Feb……), 只占756条
+	纯日期组成：1565
+
+  - csdn:(国内网民更偏向于用数字作为密码)
+  	| yyyy |  yyyy-mm |  yyyy-mm-dd | mm-dd |
+    |------|------|------|------|
+    | 1653148 | 669045 | 583023 | 1824891 |
+	所有数字长度大于4的口令数量为5038597,含有(形似)日期数字的口令数量为4730107, 占93.9%, 占总口令数量的73.6%
+	含英文组成的日期同样很少, 只有611条
+	纯日期组成：519827
+
+字典生成思路: 穷举某个时间段内的所有日期(不要穷举所有可能组合)
+
+* 拼音格式口令分析
+
+  两个思路：
+  1. 生成一个含有拼音与频率对应的词典, 根据拼音的频率决定匹配方式   
+  	 链接: https://blog.csdn.net/beibei8080/article/details/53508996
+  2. 通过拼音流划分来提取字符串中的拼音    
+  	 链接: https://wenku.baidu.com/view/448e5a21ec3a87c24128c42d.html
+
+  我暂时写了个贪婪的匹配方法, 思路与2类似, 但由于还需要考虑和英文单词的交集, 所以暂时还不太准确
+
+* 英文单词口令分析
 
 
 ### 0x03 字典生成思路
