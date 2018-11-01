@@ -25,8 +25,9 @@ The homework of Web Security
 ---
 * 口令长度规律分析(/data_analysis/length_count.py)    
   统计所有口令的长度, 找出占比最高的口令长度, 作为生成字典的主要长度    
-  结果如下:
-  <img src="source/passwd_length.png" width = 30% height = 30% /> <br>
+  结果如下:   
+  
+  <img src="source/passwd_length.png" width = 50% height = 50% /> <br>
 
   ps: 口令的最大长度为40, print了一下长度为40的字符串, 无法正常显示, 应该是中文密码
   pps: 顺便查了下有没有sql注入的密码, 只找到一个 '1=1' && 'yn'
