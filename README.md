@@ -50,7 +50,7 @@ The homework of Web Security
   结论:    
   yahoo的口令文件中L6,L7,L8分别占据1、2、3名, 数量为42234,34285,30250, 这三者的占比达到了总数量453490条的23.5%   
   csdn的口令文件中D8,D9,L8分别占据1、2、3名, 数量为1381247,718225,312749, 这三者之和为2412221, 占总数量6428631的37.5%   
-  由于csdn是国内的网站, Yahoo属于国际性的网站, 可以从结果中看出国内的网民更偏向于用数字作为密码, 而国外网民可能更偏向于用字母作为密码<sup>1</sup>
+  由于csdn是国内的网站, Yahoo属于国际性的网站, 可以从结果中看出国内的网民更偏向于用数字作为密码, 而国外网民可能更偏向于用字母作为密码<sup>[1]</sup>
   </br>
   
   **输出文件2**: 纯数字/字母/字符口令数量以及使用频率top10    
@@ -124,8 +124,20 @@ The homework of Web Security
 
 * NLP
 
+</br>
+### 0x04 准确率评估
+---
+   初步评估方法: 成功次数/字典大小
 
-### 0x04 参考文献
+</br>
+
+### 0x05 参考文献
 ---
 [1] Bornmann L, Leydesdorff L. Skewness of citation impact data and covariates of citation distributions: A large-scale empirical analysis based on Web of Science data[J]. Journal of Informetrics, 2016, 11(1):164-175.    
    这篇文章讲了数据分析的一些方法, 并且用PCFG生成了含有拼音的字典
+[2] Ur B, Segreti S M, Bauer L, et al. Measuring real-world accuracies and biases in modeling password guessability[C]// Usenix Conference on Security Symposium. USENIX Association, 2015:463-481.
+   这篇文章论述了密码安全强度的评价, 以及不同的字典生成方法的攻击成功率
+[3] Melicher W, Ur B, Segreti S M, et al. Fast, Lean, and Accurate: Modeling Password Guessability Using Neural Networks[J]. Journal of Networks, 2013, 8(6).
+   主要讲了如何用神经网络提升对密码安全评级的准确性(其中包含了对Markov等方法的评价,但可能没讲方法)
+[4] Golla M, Dürmuth M. On the Accuracy of Password Strength Meters[C]//Proceedings of the 2018 ACM SIGSAC Conference on Computer and Communications Security. ACM, 2018: 1567-1582.
+   该文章比对了各种密码强度评估准则, 并且衡量了这些准则的准确性
