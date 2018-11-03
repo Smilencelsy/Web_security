@@ -199,3 +199,5 @@ The homework of Web Security
    主要讲了如何用神经网络提升对密码安全评级的准确性(其中包含了对Markov等方法的评价,但可能没讲方法)</br>
 [4] Golla M, Dürmuth M. On the Accuracy of Password Strength Meters[C]//Proceedings of the 2018 ACM SIGSAC Conference on Computer and Communications Security. ACM, 2018: 1567-1582.</br>
    该文章比对了各种密码强度评估准则, 并且衡量了这些准则的准确性</br>
+[5] R. Veras, C. Collins, and J. Thorpe. On the Semantic Patterns of Passwords and their Security Impact.[[C]]//Proceedings of the 2014 Network and Distributed System Security Symposium (NDSS), 2014.</br>
+   该文章讲述了如何对密码进行分割和语义分析</br>
