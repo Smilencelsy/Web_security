@@ -1,0 +1,98 @@
+#键盘密码分析_v1
+code: analyze_keyboard_pass_v1.py (version 1)
+read_file: yahoopw.csv, csdnpw.csv
+write_file: result_yahoo.csv, result_csdn.csv
+
+#1.current work:
+define 6 type of keyboard password strings
+if password is one of the substrings of we define, we think it is keyboard password, and record it
+
+#2.next stage:
+get rid fo some single or distinguished short substring, for example, single letter or number,
+give some more accurate definition of keyboard password, and modify the code
+
+#3.分析结果
+running time : 11s
+##3.1 YAHOO FILE
+(1)all password: 442835
+(2)keyboard password: 3453
+(3)TOP 20:
+#################
+123456		1673
+123456789	226
+12345678	208
+0			202
+qwerty		172
+1234567		110
+654321		88
+12345		78
+1qaz2wsx	58
+1234567890	47
+1234		45
+asdfgh		39
+asdfghjkl	37
+qazwsx		36
+zxcvbnm		34
+qwertyuiop	33
+987654321	25
+123			21
+qwertyui	20
+qazwsxedc	15
+##################
+
+##3.2 CSDN FILE
+(1)all password: 6428631
+(2)keyboard password: 495922
+(3)TOP 50:
+##########################
+123456789			235012
+12345678			212749
+1234567890			17790
+987654321			5553
+1qaz2wsx			3667
+87654321			3281
+qwertyuiop			3143
+asdfghjkl			2826
+qazwsxedc			2515
+123456				2131
+qwertyui			1989
+asdfghjk			1058
+987654321			852
+23456789			296
+98765432			215
+1qaz2wsx3edc		208
+zaq1xsw2			191
+qwertyuio			174
+9876543				168
+poiuytrewq			150
+zaqxswcde			128
+qazwsxed			125
+lkjhgfdsa			124
+12345				92
+1234567				86
+654321				83
+zxcvbnm,			80
+qazwsxedcrfv		77
+poiuytre			61
+zxcvbnm,./			61
+123					57
+a					51
+34567890			50
+asdfghjkl;			50
+2wsx3edc			44
+1234				38
+5tgb6yhn			37
+234567890			36
+3edc4rfv			33
+qazwsx				32
+qwerty				28
+1					27
+zxcvbnm				25
+9ol.0p;/			23
+1234567890q			20
+asdfgh				19
+6yhn7ujm			18
+mnbvcxzz			16
+1qaz2wsx3edc4rfv	15
+sdfghjkl			14
+##########################
