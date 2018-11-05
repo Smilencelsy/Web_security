@@ -4,7 +4,6 @@ The homework of Web Security
 
 ### 0x00 代码结构说明
 ---
-代码匆忙整理了一下, 没有规范输入输出以及函数命名, 注释也写得不够详细, 请见谅!
 - data_analysis 数据分析
 	* length_count.py 输入yahoopw.csv/csdnpw.csv 输出passwd_length.csv
 	* structure_analysis.py 输入yahoopw.csv/csdnpw.csv 输出structure_analysis.csv & onlyLorD_analysis.csv
@@ -32,9 +31,14 @@ The homework of Web Security
   
   <img src="source/passwd_length.png" width = 90% height = 90% /> <br>
 
-  ps: 口令的最大长度为40, print了一下长度为40的字符串, 无法正常显示, 应该是中文密码   
-  pps: 顺便查了下有没有sql注入的密码, 只找到一个 '1=1' && 'yn'  嘻嘻   
-  ppps: 图好像画错了, 两个都是8位最多, 我明天重画一个...   
+  <details>
+    <summary>备注</summary>
+    <p>     
+	    ps: 口令的最大长度为40, print了一下长度为40的字符串, 无法正常显示, 应该是中文密码</br>      
+	    pps: 顺便查了下有没有sql注入的密码, 只找到一个 '1=1' && 'yn'  嘻嘻</br>        
+	    ppps: 图好像画错了, 两个都是8位最多, 我明天重画一个...   
+    </p>
+  </details>
   </br>
   
 * 口令结构分析    
