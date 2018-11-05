@@ -10,6 +10,9 @@ The homework of Web Security
 	* structure_analysis.py 输入yahoopw.csv/csdnpw.csv 输出structure_analysis.csv & onlyLorD_analysis.csv
 	* date_analysis 输入yahoopw.csv/csdnpw.csv 输出onlydate_passwd.csv & enDate.csv
 - pwdList_generate 字典生成
+	* 1000000-top.txt  频率前top1000000的口令
+	* 键盘密码分析_v1.txt 键位口令分析
+	* nlp_passwd.docx NLP口令分析
 
 
 ### 0x01 总体思路说明
