@@ -26,7 +26,7 @@ The homework of Web Security
 
 ### 0x02 数据分析思路与结论
 ---
-1. 口令长度规律分析(length_analysis)       
+#### 1. 口令长度规律分析(length_analysis)       
   * 思路分析: 了解用户偏好的口令长度, 有利于字典的生成
   * 统计方法: 对所有口令进行长度统计划分, 以图表的形式展示       
   * 结果:   
@@ -43,21 +43,22 @@ The homework of Web Security
   </details>
   </br>
   
-2. 口令结构分析(structure_analysis)    
+#### 2. 口令结构分析(structure_analysis)    
   * 思路分析: 口令由数字、字母、其他字符组成,分别由D(digit)、L(letter)、S(signel)表示, 一段口令的结构形式可如下表示:         
   > woaini777  ->  L6D3             
   * 统计方法: 统计所有的口令结构形式及其出现概率,以及字符子串(如L3)的出现概率,还有纯数字/纯字母的口令TOP10(弱口令集)         
   * 结果:            
            
 	   
-  **输出文件1** : 口令结构/出现次数/出现概率
+  &emsp;**输出文件1** : 口令结构/出现次数/出现概率
 
   | structure | nums | freq |
   | ------ | ------ |------|
   | L5D2 | 8704 | 0.0005 |
          
-  <img src="source/structure_analysis_1.png" width = 50% height = 50% />
-  <img src="source/structure_analysis_2.png" width = 50% height = 50% /> </br>      
+  &emsp;&emsp;<img src="source/structure_analysis_1.png" width = 40% height = 40% />         
+  
+  &emsp;&emsp;<img src="source/structure_analysis_2.png" width = 40% height = 40% /> </br>      
   
   结论:    
   yahoo结果中L6,L7,L8占据123名, 数量为42234,34285,30250, 三者占比达到了总量453490条的23.5%   
@@ -65,32 +66,32 @@ The homework of Web Security
   csdn国内用户较多,Yahoo属于国际性网站,可以从结果看出国内网民更偏向于用数字作为密码, 而国外网民更偏向于用字母作为密码<sup>[1]</sup>
   </br>
   
-  **输出文件2**: 纯数字/字母/字符口令数量以及使用频率top10    
+  &emsp;**输出文件2**: 纯数字/字母/字符口令数量以及使用频率top10    
   
   | structure | nums | 1 | 2 ...|   
   | ------ | ------ |------| ------ |   
   | L8 | 8704 | sksssss:100| xxxxxxxx:100|
 
   yahoo:   
-  <img src="source/onlyLDS-yahoo.png" width = 70% height = 70% /> </br>
+  <img src="source/onlyLDS-yahoo.png" width = 50% height = 50% /> </br>
   
   csdn:   
-  <img src="source/onlyDLS-csdn.png" width = 70% height = 70% /> </br>
+  <img src="source/onlyDLS-csdn.png" width = 50% height = 50% /> </br>
   
   还有些奇怪的东西:     
   <img src="source/onlyDLS.jpg" width = 70% height = 70% /> </br>
               
-  **输出文件3**: 字符子串及其出现次数       
+  &emsp;**输出文件3**: 字符子串及其出现次数       
   
   | structure_str | 1 | 2... |
   | ------ | ------ |------|
   | L8 | password-1275 | sunshine-350 |           
               
-  该文件主要用于PCFG等字典生成方法计算概率用, 以"-"作为字符串和出现频数的分割
+  &emsp;该文件主要用于PCFG等字典生成方法计算概率用, 以"-"作为字符串和出现频数的分割
   
   </br>
 
-3. 日期格式口令分析   
+#### 3. 日期格式口令分析   
   * 思路分析: 日期密码可能出现年份(yyyy), 年份-月份(yyyymm) , 年月日(yyyymmdd/mmddyyyy/ddmmyyyy/yymmdd/mmddyy/ddmmyy)以及
   月日(mmdd)这四种主要形式        
   * 统计方法: 日期我们限定在正常日期(年份取近现代史1700-2100,月取01-12,日期取01-31)内, 然后对所有口令进行正则判断, 得到以下结果:
@@ -118,7 +119,7 @@ The homework of Web Security
    </br>   
    
    
-4. 拼音格式口令分析
+#### 4. 拼音格式口令分析
 
   两个思路：
   1. 生成一个含有拼音与频率对应的词典, 根据拼音的频率决定匹配方式   
@@ -129,7 +130,7 @@ The homework of Web Security
   我暂时写了个贪婪的匹配方法, 思路与2类似, 但由于还需要考虑和英文单词的交集, 所以暂时还不太准确    
   </br>    
   
-5. 英文单词口令分析         
+#### 5. 英文单词口令分析         
    英文单词
 
 </br>
