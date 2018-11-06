@@ -12,6 +12,7 @@ The homework of Web Security
 	* 1000000-top.txt  频率前top1000000的口令
 	* 键盘密码分析_v1.txt 键位口令分析
 	* nlp_passwd.docx NLP口令分析
+	* nlp_passwd.zip NLP口令分析需要的语料库
 
 
 ### 0x01 总体思路说明
