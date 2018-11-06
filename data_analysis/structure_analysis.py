@@ -3,6 +3,7 @@
 import ConfigParser
 import time
 import re
+import csv
 
 import pandas as pd
 from pandas import Series,DataFrame
@@ -56,6 +57,54 @@ class Analysis(object):
 		df = df.sort_values(by = 'nums')
 		return df
 
+
+	#统计字符串出现频率
+	def countStr(self):
+		pattern_letter = re.compile(r'[a-z]+' , re.I)
+		pattern_digit = re.compile(r'\d+')
+		pattern_sig = re.compile(r'[^A-Za-z0-9]+')
+		str_dic = {}
+		str_file = open('csdn_strfile.csv','w')
+		csv_write = csv.writer(str_file)  #由于dataframe只支持对齐的table 这里采用了csv库的方法写文件
+		for line in self.passwdList:
+			letter_list = re.findall(pattern_letter,str(line))
+			digit_list = re.findall(pattern_digit,str(line))
+			sig_list = re.findall(pattern_sig,str(line))
+			for L_str in letter_list:
+				tmp_key = 'L' + str(len(L_str))
+				if tmp_key in str_dic:
+					if str(L_str) in str_dic[tmp_key]:
+						str_dic[tmp_key][str(L_str)] += 1
+					else:
+						str_dic[tmp_key][str(L_str)] = 1
+				else:
+					str_dic[tmp_key] = {str(L_str):1}
+			for L_str in digit_list:
+				tmp_key = 'D' + str(len(str(L_str)))
+				if tmp_key in str_dic:
+					if str(L_str) in str_dic[tmp_key]:
+						str_dic[tmp_key][str(L_str)] += 1
+					else:
+						str_dic[tmp_key][str(L_str)] = 1
+				else:
+					str_dic[tmp_key] = {str(L_str):1}
+			for L_str in sig_list:
+				tmp_key = 'S' + str(len(str(L_str)))
+				if tmp_key in str_dic:
+					if str(L_str) in str_dic[tmp_key]:
+						str_dic[tmp_key][str(L_str)] += 1
+					else:
+						str_dic[tmp_key][str(L_str)] = 1
+				else:
+					str_dic[tmp_key] = {L_str:1}
+		for tmp_dic in str_dic.keys():
+			tpList = sorted(str_dic[tmp_dic].items(),key=lambda item:item[1],reverse=True)
+			write_res = [tmp_dic]
+			for tu in tpList:
+				l = str(tu[0]) + '-' + str(tu[1])
+				write_res.append(l)
+			csv_write.writerow(write_res)
+
 	#统计口令结构
 	def countStruc(self):
 		strucList = []
@@ -72,13 +121,33 @@ class Analysis(object):
 			strucList.append(struc)
 
 		#统计每种结构的口令数量
-		df = DataFrame(columns = ('structure','nums'))
+		nums = {}
 		for stru in strucList:
-			if stru in df['structure']:
-				df.loc[stru]['nums'] += 1
+			if stru in nums.keys():
+				nums[stru] += 1
 			else:
-				df.loc[stru] = [stru , 1]
+				nums[stru] = 1
 
+		#计算出现频率 存入dataframe
+		df = DataFrame(columns = ('structure','nums','freq'))
+		for x in nums.keys():
+			char = x[0] 
+			stru = x[1:]
+			c = 1 
+			res = ''
+			for i in stru:
+				if i == char:
+					c += 1
+				else:
+					res += char
+					res += str(c)
+					char = i
+					c = 1
+			res += char
+			res += str(c)
+			ge = '{:.18f}'.format(int(nums[x]) * 1.0 / len(strucList))
+			df.loc[x] = [x, nums[x] , ge] 
+			
 		#转换为LxDxSx的形式
 		for stri in df['structure']:
 			char = stri[0] 
@@ -100,24 +169,32 @@ class Analysis(object):
 		df = df.sort_values(by = 'nums')
 		return df
 
+
+
 if __name__ == '__main__':
 
 	time1 = time.clock()
 
 	#--------------------读文件模块--------------------#
 	#读取文件
-	data = pd.read_csv('../source/yahoopw.csv')
+	data = pd.read_csv('../source/csdnpw.csv')
 	passwdList = pd.Series(data['passwd'].values)
 
+	#记录读文件的时间
 	time2 = time.clock()
 	print 'read file time : ' , (time2 - time1)
 
 	#--------------------分析模块--------------------#
 	ana = Analysis(passwdList)
 
-#	ana.countStruc().to_csv('structure_analysis.csv',index = False)
+	#分析生成口令结构/对应数量/出现概率的字符串
+	ana.countStruc().to_csv('str_analysis_csdn.csv',index = False)
+	#分析生成仅由字母/数字组成的口令数量, 以及每种结构频率TOP10的口令
 	ana.countDorL().to_csv('onlyLorD_analysis.csv' , index = False)
+	#统计字符子串的出现频率 如L3中'lsy'的出现频率等
+	ana.countStr()
 
+	#记录分析生成的时间
 	time3 = time.clock()
 	print 'Analysis time : ' , (time3 - time2)
 
