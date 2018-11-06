@@ -106,9 +106,9 @@ The homework of Web Security
 
   - csdn:(国内网民更偏向于用数字作为密码)   
   
-    | yyyy |  yyyy-mm |  yyyy-mm-dd | mm-dd |   
-    |------|------|------|------|   
-    | 1653148 | 669045 | 583023 | 1824891 |
+    | yyyy |  yyyy-mm | mm-dd | yyyy-mm-dd | yy-mm-dd| mm-dd-yyyy| mm-dd-yy| dd-mm-yyyy |dd-mm-yy |
+    |------|------|------|------|------| ------| ------| ------| ------|    
+    | 1653148 | 669045 | 1824891 | 583023 | 1493338 | 32815 | 764935 | 34106 | 702804 |
     
     所有数字长度大于4的口令数量为5038597
 
@@ -219,7 +219,7 @@ The homework of Web Security
            
   结果: 分别生成了出现概率最高的top100、1000、5000的口令串, 组成口令破解字典
   
-  <img src="source/pcfg_generate_list.png" width = 70% height = 70% /> </br>
+  <img src="source/pcfg_generate_list.png" width = 40% height = 40% /> </br>
   
   </br>
 * Markov    
