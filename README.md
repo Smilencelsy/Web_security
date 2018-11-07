@@ -55,10 +55,16 @@ The homework of Web Security
   | structure | nums | freq |
   | ------ | ------ |------|
   | L5D2 | 8704 | 0.0005 |
-         
-  &emsp;&emsp;<img src="source/structure_analysis_1.png" width = 40% height = 40% />         
+            
+  yahoo:          
   
-  &emsp;&emsp;<img src="source/structure_analysis_2.png" width = 40% height = 40% /> </br>      
+  <img src="source/structure_analysis_1.png" width = 40% height = 40% /> </br>        
+  
+  <img src="source/passwd_structure_yahoo.jpg" width = 50% height = 50% /> </br>          
+  
+  <img src="source/structure_analysis_2.png" width = 40% height = 40% /> </br>       
+  
+  <img src="source/passwd_structure_yahoo.jpg" width = 50% height = 50% /> </br>  
   
   结论:    
   yahoo结果中L6,L7,L8占据123名, 数量为42234,34285,30250, 三者占比达到了总量453490条的23.5%   
@@ -100,18 +106,21 @@ The homework of Web Security
   
     | yyyy |  yyyy-mm | mm-dd | yyyy-mm-dd | yy-mm-dd| mm-dd-yyyy| mm-dd-yy| dd-mm-yyyy |dd-mm-yy |
     |------|------|------|------|------| ------| ------| ------| ------|    
-    | 26995 | 829 | 21712 | 285 | 5950 | 1291 | 11411 | 1250 | 7885 |
+    | 20484 | 304 | 7991 | 285 | 4393 | 1285 | 7084 | 582 | 1423 |
     
-    所有数字长度大于4的口令数量为96742, 由于日期口令的判断中可能有重复的部分, 因此不能当作直接依据, 只能以不同日期格式的数量多少为相对概率来计算。
+    所有数字长度大于4的口令数量为96742, 其中日期口令占43831条, 占总口令数量453490的 9.67%。          
+              
+    <img src="source/date_yahoo.jpg" width = 50% height = 50% /> </br>
 
   - csdn:(国内网民更偏向于用数字作为密码)   
   
     | yyyy |  yyyy-mm | mm-dd | yyyy-mm-dd | yy-mm-dd| mm-dd-yyyy| mm-dd-yy| dd-mm-yyyy |dd-mm-yy |
     |------|------|------|------|------| ------| ------| ------| ------|    
-    | 1653148 | 669045 | 1824891 | 583023 | 1493338 | 32815 | 764935 | 34106 | 702804 |
+    | 624092 | 44861 | 149535 | 583023 | 875020 | 25419 | 175151 | 15372 | 119137 |
     
-    所有数字长度大于4的口令数量为5038597
-
+    所有数字长度大于4的口令数量为5038597, 日期密码占2611610, 占总口令数量6428631的 40.6%           
+                  
+    <img src="source/date_csdn.jpg" width = 50% height = 50% /> </br>
    </br>   
    
    
@@ -164,7 +173,7 @@ The homework of Web Security
 |  10   |123456    |    2131   | 0.0042794  |  
 
 统计图如下：  
-<img src="source/CSDN键盘密码统计图.png" width = 70% height = 70% />  
+<img src="source/CSDN键盘密码统计图.png" width = 60% height = 60% />  
 
 （2）yahoo数据集分析结果前十位   
  
@@ -182,7 +191,7 @@ The homework of Web Security
 |  10   |1234      |     45    | 0.013640497|   
 
 统计图如下:  
-<img src="source/yahoo键盘密码统计图.png" width = 70% height = 70% />        
+<img src="source/yahoo键盘密码统计图.png" width = 60% height = 60% />        
      
    </br>
    
@@ -219,7 +228,7 @@ The homework of Web Security
            
   结果: 分别生成了出现概率最高的top100、1000、5000的口令串, 组成口令破解字典
   
-  <img src="source/pcfg_generate_list.png" width = 40% height = 40% /> </br>
+  <img src="source/pcfg_generate_list.png" width = 20% height = 20% /> </br>
   
   </br>
 * Markov    
