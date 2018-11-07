@@ -31,7 +31,7 @@ The homework of Web Security
   * 统计方法: 对所有口令进行长度统计划分, 以图表的形式展示       
   * 结果:   
   
-  <img src="source/passwd_length.png" width = 70% height = 70% /> <br>
+  <img src="source/passwd_length.jpg" width = 70% height = 70% /> <br>
 
   <details>
     <summary>备注</summary>
@@ -50,7 +50,7 @@ The homework of Web Security
   * 结果:            
            
 	   
-  &emsp;**输出文件1** : 口令结构/出现次数/出现概率
+  **输出文件1** : 口令结构/出现次数/出现概率
 
   | structure | nums | freq |
   | ------ | ------ |------|
@@ -66,7 +66,7 @@ The homework of Web Security
   csdn国内用户较多,Yahoo属于国际性网站,可以从结果看出国内网民更偏向于用数字作为密码, 而国外网民更偏向于用字母作为密码<sup>[1]</sup>
   </br>
   
-  &emsp;**输出文件2**: 纯数字/字母/字符口令数量以及使用频率top10    
+  **输出文件2**: 纯数字/字母/字符口令数量以及使用频率top10    
   
   | structure | nums | 1 | 2 ...|   
   | ------ | ------ |------| ------ |   
@@ -81,13 +81,13 @@ The homework of Web Security
   还有些奇怪的东西:     
   <img src="source/onlyDLS.jpg" width = 70% height = 70% /> </br>
               
-  &emsp;**输出文件3**: 字符子串及其出现次数       
+  **输出文件3**: 字符子串及其出现次数       
   
   | structure_str | 1 | 2... |
   | ------ | ------ |------|
   | L8 | password-1275 | sunshine-350 |           
               
-  &emsp;该文件主要用于PCFG等字典生成方法计算概率用, 以"-"作为字符串和出现频数的分割
+  该文件主要用于PCFG等字典生成方法计算概率用, 以"-"作为字符串和出现频数的分割
   
   </br>
 
@@ -106,9 +106,9 @@ The homework of Web Security
 
   - csdn:(国内网民更偏向于用数字作为密码)   
   
-    | yyyy |  yyyy-mm |  yyyy-mm-dd | mm-dd |   
-    |------|------|------|------|   
-    | 1653148 | 669045 | 583023 | 1824891 |
+    | yyyy |  yyyy-mm | mm-dd | yyyy-mm-dd | yy-mm-dd| mm-dd-yyyy| mm-dd-yy| dd-mm-yyyy |dd-mm-yy |
+    |------|------|------|------|------| ------| ------| ------| ------|    
+    | 1653148 | 669045 | 1824891 | 583023 | 1493338 | 32815 | 764935 | 34106 | 702804 |
     
     所有数字长度大于4的口令数量为5038597
 
@@ -219,7 +219,7 @@ The homework of Web Security
            
   结果: 分别生成了出现概率最高的top100、1000、5000的口令串, 组成口令破解字典
   
-  <img src="source/pcfg_generate_list.png" width = 70% height = 70% /> </br>
+  <img src="source/pcfg_generate_list.png" width = 40% height = 40% /> </br>
   
   </br>
 * Markov    
