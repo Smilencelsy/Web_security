@@ -238,12 +238,17 @@ class nlp_pw:
     # 按照原算法计算，则存在['Ilo', 'v', 'e', 'you']中只计算you，
     # 而该候选项得分完全依赖于得分较高的you，对于['I', 'love', 'you']不公平
     # 所以修改得分为得分*（2**（-len(gap_segment）)
+    # 除此之外，由于source_corpora并未完全在reference_corpora中，有些包含不常用人名的会被舍弃
+    # 因此我们对于所有得分为零的候选项，在未得到最佳候选项之前按照在source_corpora中的数量进行排列
+    # 取最大
 #   输入：候选项集合
 #   输出：最佳候选项或None，当返回None时表示该口令不适合nlp分析
     def word_slice(self, candidates):
         best_candidate = None
         best_candidate_word_segment = None
         best_score = 0
+        t_word_segment = None
+        t_gap_segment = None
         for candidate in candidates:
             [word_segment, gap_segment] = self.segment(candidate)
             if not len(word_segment) == 0:
@@ -252,6 +257,14 @@ class nlp_pw:
                     best_candidate = candidate
                     best_candidate_word_segment = word_segment
                     best_score = score
+                elif best_score == 0:
+                    if (t_word_segment == None) or ((len(t_word_segment) < len(word_segment)) & (len(t_gap_segment) < len(gap_segment))):
+                        t_word_segment = word_segment
+                        t_gap_segment = gap_segment
+                        best_candidate = candidate
+
+        if best_score == 0:
+            best_candidate_word_segment = t_word_segment
 
         return [best_candidate, best_candidate_word_segment]
 
@@ -285,9 +298,9 @@ class nlp_pw:
 
 
 # ## 使用举例
-# x = nlp_pw()
+x = nlp_pw()
 # x.biuld_corpora()
-# [a, b] = x.read_corpora()
+[a, b] = x.read_corpora()
 # print(x.word_break("Ilovechina"))
 # print(x.word_slice([['Ilo', 'v', 'e', 'you'], ['I', 'love', 'you'], ['I', 'lo', 've', 'you']]))
 #
@@ -301,3 +314,7 @@ class nlp_pw:
 #
 # print(x.word_slice([['Ilo', 'v', 'e', 'you'], ['I', 'love', 'you']]))
 # print(x.words_tag(["I", "love", "you"]))
+a = x.word_break("steveol")
+print(a)
+b = x.word_slice(a)
+print(b)
