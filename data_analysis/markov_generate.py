@@ -69,6 +69,7 @@ def getMax(dic):
     return cc
 
 start=time.clock()
+#当计算数字字符串时readfiles的参数应该是存储口令中数字字符串的文件
 readfiles('yahoo-words.txt')     #yahoo-words.txt中存储了口令中的英文字符串，读出文件内容并将文件内容存储在passwords中
 pre_passwords()                  #对passwords中的字符串加前后缀
 yiyuan_dict()                    #填写字典dicts1，存储键值对（单个字符：出现的次数）
@@ -78,6 +79,7 @@ eryuan_dict()                    #填写字典dicts，存储键值对（password
 
 #zifu存储要拼接的所有字符
 zifu=['$','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+#如果是计算数字字符串则  zifu=['$','0','1','2','3','4','5','6','7','8','9']
 lenzufu存储列表zifu的长度
 lenzufu=len(zifu)
 
