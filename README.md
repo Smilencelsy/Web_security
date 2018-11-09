@@ -163,7 +163,7 @@ The homework of Web Security
 		<img src="source/yahoo口令20到30大常用分词分析饼状图.png" width = 50% height = 50% />        
 	
 	可以看出，分词结果和预期仍有较大差距，但仍然可以稍见端倪。其中用a来做口令分隔符的比例很大，除此之外associated占比也很客观。               
-	处理单个单词的情况，“i love you”，"baby girl"和“love me”三种句式占比也较大。              
+	对于n-grams的情况，“i love you”，"baby girl"和“love me”三种句式占比也较大。              
 	<img src="source/yahoo口令30大常用分词.PNG" width = 20% height = 20% />               
 	b) yahoo口令及中20大常用句式饼状图：                   
 	<img src="source/yahoo口令10大常用句式分析饼状图.png" width = 50% height = 50% />            
