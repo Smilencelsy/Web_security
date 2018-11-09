@@ -159,7 +159,7 @@ extract_word.py将会对原始yahoo与csdn口令集进行读取，并且使用�
 </br><img src="source/yahoo_word_top_30.PNG" width = 15% height = 15% />
 
  （2）csdn口令集中，top30常用英文分词如下：
-</br><img src="source/csdn_word_top_30.PNG" width = 15% height = 15% />
+ </br><img src="source/csdn_word_top_30.PNG" width = 15% height = 15% />
 
 5.2基于自然语言处理的英文单词
   * 注：nlp_pw.py是用来对单个单词进行分词和标记语义的类
