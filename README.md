@@ -155,11 +155,11 @@ extract_word.py将会对原始yahoo与csdn口令集进行读取，并且使用�
 
   * 2.分析结果
     在英文字典中，除掉了单字母，但是从结果可以看出来，双字母的组合出现频率仍然是最高的，因此在后期的优化中，可以忽略一部分无意义的双字母组合，更多地关注有意义的英文单词。
-  a）yahoo口令集中，top30常用英文分词如下：
-  <img src="source/yahoo_word_top_30.PNG" width = 50% height = 25% />
+ （1）yahoo口令集中，top30常用英文分词如下：
+  	<img src="source/yahoo_word_top_30.PNG" width = 50% height = 25% />
 
-  b）csdn口令集中，top30常用英文分词如下：
-  <img src="source/csdn_word_top_30.PNG" width = 50% height = 25% />
+ （2）csdn口令集中，top30常用英文分词如下：
+ 	 <img src="source/csdn_word_top_30.PNG" width = 50% height = 25% />
 
 5.2基于自然语言处理的英文单词
   * 注：nlp_pw.py是用来对单个单词进行分词和标记语义的类
