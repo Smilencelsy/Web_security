@@ -137,15 +137,15 @@ The homework of Web Security
   
   
 #### 5. 英文单词口令分析         
-  英文单词
-   * 注：nlp_pw.py是用来对单个单词进行分词和标记语义的类
+基于自然语言处理的英文单词
+  * 注：nlp_pw.py是用来对单个单词进行分词和标记语义的类
   	 nlp_run.py是对整个yahoo密码集进行分析的代码，本来想写成多线程，但是wornet用的不熟，所以暂未实现
 	 上述两个类在效率上都有所欠缺，故利用20k字典，使用前缀树的算法对口令进行分析，来确定常用的分词方式，
 	 基本思想为：该词的字串在词典中，但该词不在。
 	 word_tag.py用来对上述利用前缀树算法分好词的结果集进行标注，调用了nltk的wordnet库。其中标注与词性
 	 的对应关系为：
 	 <img src="source/tags.PNG" width = 20% height = 20% />  
-   * 1.思路分析
+  * 1.思路分析
          利用nlp技术分析口令集，获得口令的语法习惯，甚至深层语义，如口令“iloveyou”的语法为“名词-动词-名词”。
 	 如果我们可以得到用户的口令构造习惯，对我们生成合适的口令集有巨大帮助。
 	 基于自然与语言处理的口令分析主要包括一下几大步骤：
@@ -154,23 +154,24 @@ The homework of Web Security
 	 3）词性泛化
 	 4）构成语义树
 	 5）根据语义树得到密码生成器
-   * 2. 分析结果
-    	目前只完成了对yahoo口令及的分析，主要分析了常用句式，和常用断词方式。
+  * 2. 分析结果
+  	目前只完成了对yahoo口令及的分析，主要分析了常用句式，和常用断词方式。
 	我们在分析考虑到名词占密码口令比例较大，我们将不考虑单一名词词性的句式。
-a) yahoo口令集中，30大常用分词饼状图：
-<img src="source/yahoo口令10大常用分词分析饼状图.png" width = 50% height = 50% />
-<img src="source/yahoo口令10到20大常用分词分析饼状图.png" width = 50% height = 50% />
-<img src="source/yahoo口令20到30大常用分词分析饼状图.png" width = 50% height = 50% />
-
-可以看出，分词结果和预期仍有较大差距，但仍然可以稍见端倪。其中用a来做口令分隔符的比例很大，除此之外associated
-占比也很客观。处理单个单词的情况，“i love you”，"baby girl"和“love me”三种句式占比也较大。
-<img src="source/yahoo口令30大常用分词.PNG" width = 20% height = 20% />        
-
-b) yahoo口令及中20大常用句式饼状图：
-<img src="source/yahoo口令10大常用句式分析饼状图.png" width = 50% height = 50% />        
-<img src="source/yahoo口令10到20大常用句式分析饼状图.png" width = 50% height = 50% />        
-可以看出，除了名词-名词（NN-\*-NN）方式，形容词-名词（JJ-NN），名词复数-动词ing（NNS-VBP）等方式也很常用。
-<img src="source/Yahoo口令30大常用句式.PNG" width = 20% height = 20% />            
+	a) yahoo口令集中，30大常用分词饼状图：
+		<img src="source/yahoo口令10大常用分词分析饼状图.png" width = 50% height = 50% />
+		<img src="source/yahoo口令10到20大常用分词分析饼状图.png" width = 50% height = 50% />
+		<img src="source/yahoo口令20到30大常用分词分析饼状图.png" width = 50% height = 50% />
+	
+	可以看出，分词结果和预期仍有较大差距，但仍然可以稍见端倪。其中用a来做口令分隔符的比例很大，除此之外associated占比也很客观。
+	处理单个单词的情况，“i love you”，"baby girl"和“love me”三种句式占比也较大。
+	<img src="source/yahoo口令30大常用分词.PNG" width = 20% height = 20% />        
+	b) yahoo口令及中20大常用句式饼状图：
+	<img src="source/yahoo口令10大常用句式分析饼状图.png" width = 50% height = 50% />        
+	<img src="source/yahoo口令10到20大常用句式分析饼状图.png" width = 50% height = 50% />        
+	可以看出，除了名词-名词（NN-\*-NN）方式，形容词-名词（JJ-NN），名词复数-动词ing（NNS-VBP）等方式也很常用。
+	<img src="source/Yahoo口令30大常用句式.PNG" width = 20% height = 20% />       
+	
+     
    </br>
    
    
