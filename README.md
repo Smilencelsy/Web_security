@@ -156,10 +156,10 @@ extract_word.py将会对原始yahoo与csdn口令集进行读取，并且使用�
   * 2.分析结果
     在英文字典中，除掉了单字母，但是从结果可以看出来，双字母的组合出现频率仍然是最高的，因此在后期的优化中，可以忽略一部分无意义的双字母组合，更多地关注有意义的英文单词。
   a）yahoo口令集中，top30常用英文分词如下：
-  <img src="source/yahoo_word_top_30" width = 50% height = 50% />
+  <img src="source/yahoo_word_top_30.png" width = 50% height = 50% />
 
   b）csdn口令集中，top30常用英文分词如下：
-  <img src="source/csdn_word_top_30" width = 50% height = 50% />
+  <img src="source/csdn_word_top_30.png" width = 50% height = 50% />
   可以看出，较短的字母组合占据了大多数。
 
 5.2基于自然语言处理的英文单词
