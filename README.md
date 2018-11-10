@@ -70,8 +70,16 @@ The homework of Web Security
   yahoo结果中L6,L7,L8占据123名, 数量为42234,34285,30250, 三者占比达到了总量453490条的23.5%   
   csdn结果中D8,D9,L8占据1、2、3名, 数量为1381247,718225,312749, 这三者之和为2412221, 占总数量6428631的37.5%   
   csdn国内用户较多,Yahoo属于国际性网站,可以从结果看出国内网民更偏向于用数字作为密码, 而国外网民更偏向于用字母作为密码<sup>[1]</sup>
-  </br>
+  </br>            
+  对经过结构分析后的口令集进行测试, 可以看出在小规模的检测中, 结构分析的测试结果良好, 且随口令字典长度的提升增长较快       
   
+  yahoo:           
+  <img src="source/yahoo-structure-1000.png" width = 50% height = 50% /> <br>
+          
+  <img src="source/yahoo-structure-5000.png" width = 50% height = 50% /> <br>     
+         
+  
+	  
   **输出文件2**: 纯数字/字母/字符口令数量以及使用频率top10    
   
   | structure | nums | 1 | 2 ...|   
@@ -289,7 +297,15 @@ extract_word.py将会对原始yahoo与csdn口令集进行读取，并且使用�
            
   结果: 分别生成了出现概率最高的top100、1000、5000的口令串, 组成口令破解字典
   
-  <img src="source/pcfg_generate_list.png" width = 20% height = 20% /> </br>
+  <img src="source/pcfg_generate_list.png" width = 20% height = 20% /> </br>         
+             
+  测试结果:      
+  
+  yahoo:
+  <img src="source/yahoo-pcfg-5000.png" width = 50% height = 50% /> </br>
+   
+  csdn
+  <img src="source/csdn-pcfg-5000.png" width = 50% height = 50% /> </br>
   
   </br>
 * Markov    
@@ -318,7 +334,9 @@ extract_word.py将会对原始yahoo与csdn口令集进行读取，并且使用�
           
   Markov其实并不难理解, 只是用到了一些概率论知识, 一定要找相关文章和代码结合着看, 还是很容易理解的。
   
-  </br>
+  
+  </br>     
+  
 * NLP       
   基于NLP的口令分析思路                   
   1）分词                    
@@ -343,7 +361,19 @@ extract_word.py将会对原始yahoo与csdn口令集进行读取，并且使用�
   > 目前实现方式是，根据最有可能的两个句式，以及口令集中对应词性使用最多的100个单词生成的，比较简单。。。                     
   
 &emsp;&emsp;**PCFG和NLP的结合点**在于, PCFG将字符串划分为多个字符段并计算概率, 而NLP则是对单个的字符段进行语义分析, 两者的划分相同, 但是计算概率的方法不同。前者只是简单的统计分析, 后者则是更深层次的模型训练。
-
+             
+  测试结果:      
+  
+  yahoo:          
+  
+  <img src="source/yahoo-nlp-5000.png" width = 50% height = 50% /> </br>
+   
+  csdn:         
+  
+  <img src="source/csdn-nlp-5000.png" width = 50% height = 50% /> </br>        
+  
+  结论:   
+  在小数据集上, nlp和markov链的表现均不如PCFG好, 一方面是需要更深层次和更长时间的训练, 另一方面与数据集的大小和形式有关
 </br>   
 
 ### 0x04 准确率评估    
