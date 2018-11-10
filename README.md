@@ -137,7 +137,31 @@ The homework of Web Security
   
   
 #### 5. 英文单词口令分析         
-基于自然语言处理的英文单词
+5.1基于英文分词的口令处理
+  * 注：英文分词程序extract_word.py的输入为：
+  1）英文字典20k.txt：内含20000个英文单词
+  2）口令集：csdnpw.csv与yahoopw.csv
+  输出为:
+  分析结果:
+  1）english-csdn-20000.csv：对csdn口令集的分析结果
+  2）english-yahoo-20000.csv：对yahoo口令集的分析结果
+  
+  * 1.思路分析
+extract_word.py将会对原始yahoo与csdn口令集进行读取，并且使用了一个含有20000个常见英文单词的词典，统计这20000个常见的英文单词在口令集中出现的次数，分别计算出现的概率并且进行排序，得到最常出现的英文单词。
+需要注意的是，算法的设计需要高效。最坏的情况下，一个个单词进行对比，在csdn与yahoo所有的口令与20000个英文单词进行对比中可能需要上百亿次比较，时间上的开销是我们无法承受的，因此需要对算法设计进行优化：
+1）数据预处理：对20k.txt中的英文单词进行预处理，去除单个的字母，对单个字母的分析已经包含在了弱口令分析中
+2）检测英文分词的方法：一开始我们简单地进行双重循环直接一个个对比，十分低效，后来经过讨论使用了pandas数据库中一些相关API，极大地提升了算法性能
+3）减少重复次数：尽量使用少的循环，在统计好了出现次数后直接计算概率，以免还需要重复循环，增加额外时间开销。
+
+  * 2.分析结果
+    在英文字典中，除掉了单字母，但是从结果可以看出来，双字母的组合出现频率仍然是最高的，因此在后期的优化中，可以忽略一部分无意义的双字母组合，更多地关注有意义的英文单词。
+</br>（1）yahoo口令集中，top30常用英文分词如下：
+</br><img src="source/yahoo_word_top_30.PNG" width = 15% height = 15% />
+
+</br>（2）csdn口令集中，top30常用英文分词如下：
+</br><img src="source/csdn_word_top_30.PNG" width = 15% height = 15% />
+
+5.2基于自然语言处理的英文单词
   * 注：nlp_pw.py是用来对单个单词进行分词和标记语义的类
   	 nlp_run.py是对整个yahoo密码集进行分析的代码，本来想写成多线程，但是wornet用的不熟，所以暂未实现
 	 上述两个类在效率上都有所欠缺，故利用20k字典，使用前缀树的算法对口令进行分析，来确定常用的分词方式，
@@ -177,7 +201,7 @@ The homework of Web Security
    
 #### 6. 键盘格式口令分析
 
-  * 注：code: analyze_keyboard_pass_v1.py (version 1)  
+  * 注：code: analyze_keyboard_pass_v2.py (version 2)  
    读取文件: yahoopw.csv, csdnpw.csv  
    写文件（字典列表）: result_yahoo_v2.csv, result_csdn_v2.csv  
   * current work:  
